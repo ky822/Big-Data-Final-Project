@@ -2,10 +2,15 @@
 import sys
 import string
 
+
+TRIP_COL = 14
+FARE_COL = 11
+
+
 for line in sys.stdin:
 	l=line.split(",")
 	if l[0]!="medallion":
-		if len(l)==11:
+		if len(l)==FARE_COL:
 			key = str(l[0]+','+l[1]+','+l[2]+','+l[3])
 			l[-1] = l[-1].rstrip("\n")
 			value = "\t".join(l[4:])
