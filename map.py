@@ -3,13 +3,12 @@ import sys
 import string
 
 
-TRIP_COL = 14
 FARE_COL = 11
 
 
 for line in sys.stdin:
 	l=line.split(",")
-	if l[0]!="medallion":
+	if l[0]!="medallion" or l[4] != 'CSH' :
 		if len(l)==FARE_COL:
 			key = str(l[0]+','+l[1]+','+l[2]+','+l[3])
 			l[-1] = l[-1].rstrip("\n")
