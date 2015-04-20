@@ -12,6 +12,7 @@ for line in sys.stdin:
         time_secs = int(trip_time_in_secs)
     except ValueError:
         continue
-    new_time = str(new_time + datetime.timedelta(0, int(0.5 * time_secs)))
+    new_time = new_time + datetime.timedelta(0, int(0.5 * time_secs))
+    hour = str(new_time.hour)
     tip_amount = line[1].strip().split('\t')[14]
-    print new_time + '\t' + tip_amount
+    print hour + '\t' + tip_amount
