@@ -3,15 +3,15 @@ import sys
 last_key = None
 NUM_FARE_VAL = 7
 
-
 for line in sys.stdin:
     key, value = line.strip().split("\t")[0], line.strip().split("\t")[1:]
-    if key == last_key:
+    if value[-1] != '':
+   	if key == last_key:
 		if len(value) == NUM_FARE_VAL:
     			fare_value.append(value)
     		else:
     			trip_value.append(value)
-    else:
+    	else:
     		if last_key:
     			for trip in trip_value:
     				for fare in fare_value:
