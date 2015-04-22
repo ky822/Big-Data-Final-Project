@@ -1,6 +1,8 @@
 # Big-Data-Final-Project
 
+#NOTE
 
+tot_amount has missing values !!!
 
 #FARE_PREVIEW
 
