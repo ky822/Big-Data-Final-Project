@@ -3,33 +3,32 @@ import sys
 last_key = None
 NUM_FARE_VAL = 7
 
+
 for line in sys.stdin:
-    key, value = line.strip().split("\t")[0], line.strip().split("\t")[1:]
-    if value[-2] == '' or value[-1] == '':
-      print "True"
-    else:
-      continue
-    """
-    if len(value[-1]) < 1:
-        print "=========++++++++++++=============="
-        continue
-    else:
-      if key == last_key:
-            if len(value) == NUM_FARE_VAL:
+    key, value = line.strip().split("\t")[0], line.strip().split("\t")[1:]    
+    if key == last_key:
+		if len(value) == NUM_FARE_VAL:
     			fare_value.append(value)
-            else:
+    		else:
     			trip_value.append(value)
-      else:
-    		if last_key:
+    else:
+   		if last_key:
     			for trip in trip_value:
     				for fare in fare_value:
-    					print last_key + "\t",
-    					for i in trip:
-						print i + "\t",
+					TRIP = []
+					FARE = []
+					for i in trip:
+						TRIP.append(i)
 					for f in fare:
-						print f + "\t",
-					print
-
+						FARE.append(f)
+					test = '\t'.join([last_key]+TRIP+FARE).split('\t')
+    					if len(test) == 18:
+						print last_key + "\t",
+    						for i in trip:
+							print i + "\t",
+						for f in fare:
+							print f, 
+						print
     		last_key = key
     		trip_value = []
 		fare_value = []
@@ -40,10 +39,17 @@ for line in sys.stdin:
 
 for trip in trip_value:
 	for fare in fare_value:
-		print last_key + "\t",
+		TRIP = []
+		FARE = []
 		for i in trip:
-			print i + "\t",
+			TRIP.append(i) 
 		for f in fare:
-			print f + "\t",
-		print
-"""
+			FARE.append(f)
+		test = '\t'.join([last_key]+TRIP+FARE).split('\t')
+		if len(test) == 18:
+			print last_key + "\t",
+			for i in trip:
+				print i + "\t",
+			for f in fare:
+				print f,
+			print
