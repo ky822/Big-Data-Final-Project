@@ -20,7 +20,7 @@ for line in sys.stdin:
         val.append(value)
 
 
-if len(val) > 1:
+if len(val) <  1:
    print key + '\t' + val[0] + val[1]
 else:
     print key + '\t' +  val[0]
