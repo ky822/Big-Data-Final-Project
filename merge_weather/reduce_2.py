@@ -19,7 +19,12 @@ for line in sys.stdin:
         val.append(value)
 
 
+<<<<<<< HEAD
 if len(val) > 1:
    print key + '\t' + val[0] + '\t'+ val[1]
+=======
+if len(val) <  1:
+   print key + '\t' + val[0] + val[1]
+>>>>>>> b1bf1ff8d7f6093a600733ef0d4c5eafbd768575
 else:
     print key + '\t' +  val[0]
