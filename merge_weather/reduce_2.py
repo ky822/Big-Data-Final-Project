@@ -1,11 +1,10 @@
 #/usr/bin/python
 
-
 import sys
 
 current_key = None
 current_value = 0
-
+val = []
 
 for line in sys.stdin:
     key, value = line.strip().split('\t', 1)[0], line.strip().split('\t', 1)[1]
@@ -14,13 +13,13 @@ for line in sys.stdin:
     else:
         if current_key:
            assert(len(val) == 2)
-            print key + '\t' + val[0] + val[1]
+           print key + '\t' + val[0] +'\t'+ val[1]
         current_key = key
         val = []
         val.append(value)
 
 
 if len(val) > 1:
-   print key + '\t' + val[0] + val[1]
+   print key + '\t' + val[0] + '\t'+ val[1]
 else:
     print key + '\t' +  val[0]

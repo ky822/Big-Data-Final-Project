@@ -26,7 +26,7 @@ for line in sys.stdin:
     else:
         if current_date:
             current_avg = current_perc / count
-            print "%s\t%.2f" % (current_date, current_avg)
+	    print "%s\t%.3f" % (current_date, current_avg)
         current_date = date
         current_perc = perc
         count = 1
