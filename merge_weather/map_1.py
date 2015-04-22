@@ -18,6 +18,6 @@ for line in sys.stdin:
        tips = float(line[1].strip().split('\t')[14])
        perc = tips/tot_amount
        print date + '\t' + str(perc)
-    except Exception:
+    except IndexError:
         continue
 
