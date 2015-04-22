@@ -5,13 +5,21 @@ NUM_FARE_VAL = 7
 
 for line in sys.stdin:
     key, value = line.strip().split("\t")[0], line.strip().split("\t")[1:]
-    if value[-1] != '':
-   	if key == last_key:
-		if len(value) == NUM_FARE_VAL:
+    if value[-2] == '' or value[-1] == '':
+      print "True"
+    else:
+      continue
+    """
+    if len(value[-1]) < 1:
+        print "=========++++++++++++=============="
+        continue
+    else:
+      if key == last_key:
+            if len(value) == NUM_FARE_VAL:
     			fare_value.append(value)
-    		else:
+            else:
     			trip_value.append(value)
-    	else:
+      else:
     		if last_key:
     			for trip in trip_value:
     				for fare in fare_value:
@@ -38,4 +46,4 @@ for trip in trip_value:
 		for f in fare:
 			print f + "\t",
 		print
-
+"""
