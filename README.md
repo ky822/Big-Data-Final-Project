@@ -2,7 +2,13 @@
 
 #NOTE
 
-tot_amount has missing values !!!
+
+TODO:
+
+- Tips by Vendor ID
+- Tips and Location
+
+
 
 #FARE_PREVIEW
 
