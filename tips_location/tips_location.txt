@@ -1,0 +1,8 @@
+Tips and location data (pickup or dropoff?)
+Draw top 20 tips or lower 20 tips
+Five Boroughs in NY: [Analysis trips either start or end in one of these areas] ==> JSON file
+- Manhattan
+- Brooklyn
+- Queens
+- the Bronx
+- Staten Island
