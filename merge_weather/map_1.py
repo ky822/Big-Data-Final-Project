@@ -1,4 +1,4 @@
-#!/usr/bin/pyhon
+#!/usr/bin/python
 
 
 """Input file = merged_trip_fare
