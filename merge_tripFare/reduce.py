@@ -23,11 +23,11 @@ for line in sys.stdin:
 						FARE.append(f)
 					test = '\t'.join([last_key]+TRIP+FARE).split('\t')
     					if len(test) == 18:
-						print last_key + "\t",
+						print last_key,
     						for i in trip:
-							print i + "\t",
+							print "\t" + i,
 						for f in fare:
-							print f,
+							print '\t' + f,
 						print
     		last_key = key
     		trip_value = []
@@ -47,9 +47,9 @@ for trip in trip_value:
 			FARE.append(f)
 		test = '\t'.join([last_key]+TRIP+FARE).split('\t')
 		if len(test) == 18:
-			print last_key + "\t",
+			print last_key,
 			for i in trip:
-				print i + "\t",
+				print "\t" + i,
 			for f in fare:
-				print f,
+				print '\t' + f,
 			print

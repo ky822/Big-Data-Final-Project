@@ -12,5 +12,5 @@ for line in sys.stdin:
     location = values.strip().split('\t')[8: 10]
     location = '\t'.join(location)
 
-    print key + '\t' + tips + '\t' + location
+    #print key + '\t' + tips + '\t' + location
 
