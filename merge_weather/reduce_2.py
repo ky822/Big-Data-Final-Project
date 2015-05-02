@@ -18,5 +18,4 @@ for line in sys.stdin:
         val = []
         val.append(value)
 
-
 print key + '\t' + val[0] + '\t'+ val[1]
