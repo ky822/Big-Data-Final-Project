@@ -7,7 +7,7 @@ TODO:
 
 - Tips by Vendor ID
 - Tips and Location
-
+- Weather use .csv file!!!!
 
 
 #FARE_PREVIEW
