@@ -1,4 +1,4 @@
-#/usr/bin/python
+#!/usr/bin/python
 
 import sys
 
@@ -11,11 +11,11 @@ for line in sys.stdin:
     if key == current_key:
         val.append(value)
     else:
-        if current_key:
-           assert(len(val) == 2)
-           print key + '\t' + val[0] +'\t'+ val[1]
-        current_key = key
-        val = []
-        val.append(value)
+       if current_key:
+          assert(len(val) == 2)
+          print key + '\t' + val[0] + '\t'+ val[1]
+       current_key = key
+       val = []
+       val.append(value)
 
 print key + '\t' + val[0] + '\t'+ val[1]
