@@ -21,7 +21,6 @@ def point_inside_polygon(x, y, poly):
     return inside
 
 
-
 def parse_coord(c):
     coord = []
     c = c.translate(None, '[],')
@@ -30,12 +29,12 @@ def parse_coord(c):
         coord.append([float(c[i]), float(c[i + 1])])
     return coord
 
-def label(loc, m):
+def label(location, m):
     for k in m.keys():
       for val in m[k]:
-        if point_inside_polygon(loc[0], loc[1], val):
+        if point_inside_polygon(location[0], location[1], val):
+           print val
            return k
-
 
 def main():
     nyc_boro = pd.read_csv('/users/ritali/desktop/ds1004/big-data-final-project/shapefile/zipcode_list.csv')
@@ -49,9 +48,11 @@ def main():
 
     for line in sys.stdin:
         key, val = line.strip().split('\t', 1)
-        loc = [float(val.split('\t')[1]), float(val.split('\t')[2])]
-        boro = label(loc, boro_info)
-        print key + '\t' + val + '\t' + boro
+        location = [float(val.split('\t')[1]), float(val.split('\t')[2])]
+        if 0 not in location:
+           boro = label(location, boro_info)
+           if str(boro) != None:
+              print key + '\t' + val + '\t' + str(boro)
 
 
 
