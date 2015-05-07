@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 import numpy
 import seaborn as sns
 
-data = pd.read_csv('week.txt','\t')
+data = pd.read_csv('/users/ritali/desktop/ds1004/1_week_merged.txt','\t')
 data = data.ix[:,0:18]
 
 data.columns = ['Key', 'rate_code', 'store_and_fwd_flag', 'dropoff_datetime','passenger_count', 'trip_time_in_secs','trip_distance', 'pickup_longitude', 'pickup_latitude', 'dropoff_longitude', 'dropoff_latitude', 'payment_type', 'fare_amount', 'surcharge', 'mta_tax','tip_amount', 'tolls_amount', 'total_amount']
@@ -27,7 +27,7 @@ dat['distance_label']= map(distance_classification,dat.trip_distance)
 def hist_distance():
 	dat.groupby('distance_label').tip_perc.mean().plot(kind='bar')
 	plt.title('Tip Percentage v.s Trip Distance')
-	plt.savefig('hist')
+	plt.show()
 
 hist_distance()
 
@@ -46,7 +46,7 @@ dat['Time_Label']=map(time_classification,dat.trip_time_in_secs)
 def hist_timeLabel():
 	dat.groupby('Time_Label').tip_perc.mean().plot(kind='bar')
 	plt.title('Tip Percentage v.s Trip Time')
-	plt.savefig('hist_time')
+	plt.show()
 
 hist_timeLabel()
 
@@ -68,7 +68,7 @@ dat['tip_Label'] = map(tip_label,dat.tip_perc)
 def pie_chart():
 	dat.groupby('tip_Label').tip_perc.count().plot(kind='pie',autopct = '%.2f',fontsize =20, figsize=(6,6))
 	plt.title("Tipping Level Compostion")
-	plt.savefig('pie_chart')
+	plt.show()
 
 pie_chart()
 
