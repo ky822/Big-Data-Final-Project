@@ -51,8 +51,7 @@ def main():
         location = [float(val[-2]), float(val[-1])]
         if 0 not in location:
            boro = label(location, boro_info)
-           if str(boro) != None:
-              print key + '\t' + val + '\t' + str(boro)
+           print key + '\t' + val + '\t' + str(boro)
 
 
 
