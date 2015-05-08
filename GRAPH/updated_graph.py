@@ -3,12 +3,11 @@ import matplotlib.pyplot as plt
 import numpy
 import seaborn as sns
 
-data = pd.read_csv('/users/ritali/desktop/ds1004/1_week_merged.txt','\t')
-data = data.ix[:,0:18]
+data = pd.read_csv('correcteddata','\t')
+data = data.ix[:,0:5]
 
-data.columns = ['Key', 'rate_code', 'store_and_fwd_flag', 'dropoff_datetime','passenger_count', 'trip_time_in_secs','trip_distance', 'pickup_longitude', 'pickup_latitude', 'dropoff_longitude', 'dropoff_latitude', 'payment_type', 'fare_amount', 'surcharge', 'mta_tax','tip_amount', 'tolls_amount', 'total_amount']
-
-dat = data[['Key','trip_time_in_secs','trip_distance','tip_amount','total_amount']]
+data.columns = ['Pickup Time', 'trip_time_in_secs','trip_distance','tip_amount', 'total_amount']
+dat = data
 
 dat['tip_perc'] = map(float,dat.tip_amount/dat.total_amount)
 
@@ -27,9 +26,9 @@ dat['distance_label']= map(distance_classification,dat.trip_distance)
 def hist_distance():
 	dat.groupby('distance_label').tip_perc.mean().plot(kind='bar')
 	plt.title('Tip Percentage v.s Trip Distance')
-	plt.show()
+	plt.savefig('tripdistance')
 
-hist_distance()
+#hist_distance()
 
 def time_classification(time):
 	if time <=360:
@@ -46,9 +45,9 @@ dat['Time_Label']=map(time_classification,dat.trip_time_in_secs)
 def hist_timeLabel():
 	dat.groupby('Time_Label').tip_perc.mean().plot(kind='bar')
 	plt.title('Tip Percentage v.s Trip Time')
-	plt.show()
+	plt.savefig('triptime')
 
-hist_timeLabel()
+#hist_timeLabel()
 
 
 #print dat.tip_perc.describe()
@@ -68,9 +67,9 @@ dat['tip_Label'] = map(tip_label,dat.tip_perc)
 def pie_chart():
 	dat.groupby('tip_Label').tip_perc.count().plot(kind='pie',autopct = '%.2f',fontsize =20, figsize=(6,6))
 	plt.title("Tipping Level Compostion")
-	plt.show()
+	plt.savefig('pie')
 
-pie_chart()
+#pie_chart()
 
 tclass = dat.groupby(['Time_Label','tip_Label']).size().unstack()
 
@@ -86,3 +85,18 @@ tclass_nor.reset_index(level=0, inplace=True)
 #print tclass
 tclass.to_csv('tclass')
 tclass_nor.to_csv('tclass_nor')
+
+dclass = dat.groupby(['distance_label','tip_Label']).size().unstack()
+
+
+dclass['Total'] = dclass.High_Level_Tipping+dclass.Low_Level_Tipping+dclass.Medium_Level_Tipping
+dclass['MS'] = dclass.Low_Level_Tipping+dclass.Medium_Level_Tipping
+dclass_nor = (1. * dclass.T / dclass.T.sum()).T
+dclass_nor.Time_Label = dclass.index
+dclass.Time_Label = dclass.index
+dclass.reset_index(level=0, inplace=True)
+dclass_nor.reset_index(level=0, inplace=True)
+
+#print tclass
+dclass.to_csv('dclass')
+dclass_nor.to_csv('dclass_nor')
