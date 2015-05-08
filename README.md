@@ -10,9 +10,9 @@ TODO:
 - Weather use .csv file!!!!
 
 
-#Three final dataset we will be working with:
+#Three final datasets we will be working with:
 -Weather Data
-[Time, Tips, YEARMODA, TEMP, WDSP, VISIB, MAX, MIN, PRCP, SNDP, FRSHTT]
+[Time, Tips, TEMP, WDSP, VISIB, MAX, MIN, PRCP, SNDP, FRSHTT]
 
 -Label Data
 [Tips, Total_amount, dropoffTime, Dropoff Long, Dropoff Lat, Boro]
