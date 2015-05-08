@@ -7,10 +7,11 @@ import sys
 
 
 for line in sys.stdin:
-    key, values = line.strip().split('\t', 1)
+    values = line.strip().split('\t', 1)[1]
     tips = values.strip().split('\t')[14]
     location = values.strip().split('\t')[8: 10]
     location = '\t'.join(location)
+    dropofftime = values.strip().split('\t')[2]
 
-    print key + '\t' + tips + '\t' + location
+    print tips + '\t' + dropofftime + '\t' + location
 
