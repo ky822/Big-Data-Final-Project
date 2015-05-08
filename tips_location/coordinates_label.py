@@ -33,7 +33,6 @@ def label(location, m):
     for k in m.keys():
       for val in m[k]:
         if point_inside_polygon(location[0], location[1], val):
-           print val
            return k
 
 def main():
@@ -51,7 +50,7 @@ def main():
         location = [float(val[-2]), float(val[-1])]
         if 0 not in location:
            boro = label(location, boro_info)
-           print key + '\t' + val + '\t' + str(boro)
+           print val + '\t' + str(boro)
 
 
 
