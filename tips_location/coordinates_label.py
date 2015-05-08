@@ -47,8 +47,8 @@ def main():
 
 
     for line in sys.stdin:
-        key, val = line.strip().split('\t', 1)
-        location = [float(val.split('\t')[1]), float(val.split('\t')[2])]
+        val = line.strip().split('\t')
+        location = [float(val[-2]), float(val[-1])]
         if 0 not in location:
            boro = label(location, boro_info)
            if str(boro) != None:
