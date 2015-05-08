@@ -12,6 +12,7 @@ for line in sys.stdin:
     location = values.strip().split('\t')[8: 10]
     location = '\t'.join(location)
     dropofftime = values.strip().split('\t')[2]
+    tot = values.strip().split('\t')[-1]
 
-    print tips + '\t' + dropofftime + '\t' + location
+    print tips + '\t' + tot + '\t' + dropofftime + '\t' + location
 
