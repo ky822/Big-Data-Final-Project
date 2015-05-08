@@ -10,6 +10,18 @@ TODO:
 - Weather use .csv file!!!!
 
 
+#Three final dataset we will be working with:
+-Weather Data
+[Time, Tips, YEARMODA, TEMP, WDSP, VISIB, MAX, MIN, PRCP, SNDP, FRSHTT]
+
+-Label Data
+[Tips, Total_amount, dropoffTime, Dropoff Long, Dropoff Lat, Boro]
+
+
+-Cab Data only
+[PickupTime, Trip_in_secs, TripDistance, tips, total_amount]
+
+
 #FARE_PREVIEW
 
 NUM_COL = 11
