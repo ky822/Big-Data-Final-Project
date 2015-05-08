@@ -33,11 +33,11 @@ def label(location, m):
     for k in m.keys():
       for val in m[k]:
         if point_inside_polygon(location[0], location[1], val):
-           print val
+           #print val
            return k
 
 def main():
-    nyc_boro = pd.read_csv('/users/ritali/desktop/ds1004/big-data-final-project/shapefile/zipcode_list.csv')
+    nyc_boro = pd.read_csv('zipcode_list.csv')
     del nyc_boro['zipcode']
     del nyc_boro['length']
     boro_info = {'Queens': [], 'Bronx': [], 'Staten Island': [], 'Manhattan': [], 'Brooklyn': []}
@@ -47,12 +47,13 @@ def main():
 
 
     for line in sys.stdin:
-        key, val = line.strip().split('\t', 1)
-        location = [float(val.split('\t')[1]), float(val.split('\t')[2])]
+        val = line.strip().split('\t')
+        location = [float(val[-2]), float(val[-1])]
         if 0 not in location:
            boro = label(location, boro_info)
-           if str(boro) != None:
-              print key + '\t' + val + '\t' + str(boro)
+           val = '\t'.join(val)
+           if str(boro) != 'None':
+               print val + '\t' + str(boro)
 
 
 

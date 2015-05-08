@@ -4,7 +4,6 @@ import sys
 
 current_key = None
 current_value = 0
-val = []
 
 for line in sys.stdin:
     key, value = line.strip().split('\t', 1)
@@ -12,10 +11,9 @@ for line in sys.stdin:
         val.append(value)
     else:
        if current_key:
-          assert(len(val) == 2)
-          print key + '\t' + val[0] + '\t'+ val[1]
+          print current_key + '\t' + val[0] + '\t'+ val[1]
        current_key = key
        val = []
        val.append(value)
 
-print key + '\t' + val[0] + '\t'+ val[1]
+print current_key + '\t' + val[0] + '\t'+ val[1]
