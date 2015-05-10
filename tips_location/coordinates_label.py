@@ -33,7 +33,6 @@ def label(location, m):
     for k in m.keys():
       for val in m[k]:
         if point_inside_polygon(location[0], location[1], val):
-           #print val
            return k
 
 def main():

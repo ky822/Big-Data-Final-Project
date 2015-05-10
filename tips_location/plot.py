@@ -25,10 +25,10 @@ def main():
     boro_dat = pd.read_table(boro, sep = '\t', header = None)
 
     boro_tips = tips_amount(boro_dat)
-    del boro_tips['None']
+    #del boro_tips['None']
     sorted_boro = sorted(boro_tips.items(), key = operator.itemgetter(1))
-    values = np.array([sorted_boro[i][1] for i in range(5)])
-    label = np.array([sorted_boro[i][0] for i in range(5)])
+    values = np.array([sorted_boro[i][1] for i in range(6)])
+    label = np.array([sorted_boro[i][0] for i in range(6)])
 
     current_color = sns.color_palette()
     sns.barplot(label, values, palette = current_color)
