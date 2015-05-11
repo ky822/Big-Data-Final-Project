@@ -59,20 +59,6 @@
 - tips_vendor:
   map.py: input >  TripFareJoin
           output >  VendorID, tips
-  reduce.py:
-  
-  - tips_vendor:
-    map.py: input >  TripFareJoin
-            output >  VendorID, tips
-  reduce.py: input > map.py output
-             output > vendor, tips total
-
-
-
-
-- tips_vendor:
-  map.py: input >  TripFareJoin
-          output >  VendorID, tips
   reduce.py: input > map.py output
              output > vendor, tips total
 
