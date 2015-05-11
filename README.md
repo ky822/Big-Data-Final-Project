@@ -79,3 +79,13 @@
 - Data Dimension Reduction:
   map_select.py > pickup_dates, trip in secs, trip distance, tip amout, total amount
   reduce_select.py > pickup_dates, trip in secs, trip distance, tip amout, total amount
+
+- Folder Graph:
+  updated_graph.py:
+  Inputs: selected_data
+  Output: pie chart, bar plots, and stacked bar plots
+
+  weathergraph.ipynb:
+  inputs:weather merged data
+  outputs: 1) Time-Series plot of tip amount v.s Temperature 2) plot of precipitation v.s tip amount 3) wind speed v.s tip amount
+  
