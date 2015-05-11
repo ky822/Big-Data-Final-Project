@@ -1,60 +1,77 @@
 # Big-Data-Final-Project
 
-#NOTE
+# Introduction
+
+- This project focuses on analyzing the tipping behavior using NYC cab data together 
+  with weather and borough boundary data.
+
+- The three main datasets we worked with are:
+  TripFareJoin for 2012
+  Weather in 2012
+  Borough Boundary 
 
 
-TODO:
-
-- Tips by Vendor ID
-- Tips and Location
-- Weather use .csv file!!!!
-
-
-#Three final datasets we will be working with:
--Weather Data
-[Time, Tips, TEMP, WDSP, VISIB, MAX, MIN, PRCP, SNDP, FRSHTT]
-
--Label Data
-[Tips, Total_amount, dropoffTime, Dropoff Long, Dropoff Lat, Boro]
-
-
--Cab Data only
-[PickupTime, Trip_in_secs, TripDistance, tips, total_amount]
-
-
-#FARE_PREVIEW
-
-NUM_COL = 11
-
-
-medallion, hack_license, vendor_id, pickup_datetime, payment_type, fare_amount, surcharge, mta_tax, tip_amount, tolls_amount, total_amount
-2013000001,2013000001,VTS,2013-01-01 00:00:00,CSH,20.5,0.5,0.5,0,0,21.5
-2013000002,2013000002,VTS,2013-01-01 00:00:00,CSH,6,0.5,0.5,0,0,7
-2013000003,2013000003,VTS,2013-01-01 00:00:00,CRD,10.5,0.5,0.5,2.2,0,13.7
-2013000004,2013000004,VTS,2013-01-01 00:00:00,CRD,8,0.5,0.5,1.7,0,10.7
-2013000005,2013000005,VTS,2013-01-01 00:00:00,CRD,14.5,0.5,0.5,4.65,0,20.15
-2013000006,2013000006,VTS,2013-01-01 00:00:00,CSH,28.5,0.5,0.5,0,4.8,34.3
-2013000007,2013000007,VTS,2013-01-01 00:00:00,CRD,9,0.5,0.5,1.9,0,11.9
-2013000008,2013000008,VTS,2013-01-01 00:00:00,CSH,5,0.5,0.5,0,0,6
-2013000009,2013000009,CMT,2013-01-01 00:00:00,CRD,4,0.5,0.5,1,0,6
+- We have 9 folders that each serves different purposes.
+  DH_headmap
+  DataReduction
+  GRAPH
+  merge_tripfare
+  merge_weather
+  shapefile
+  tips_location
+  tips_pickuptime
+  tips_vendor
 
 
 
+# Instruction
 
-#TRIP_PREVIEW
+- tips_pickuptime:
+  This folder perform analysis on average tipping amount v.s. hour of the day.
+  
+  MapReduce: input > reduced data with pickuptime, tips, total_amount, trip_in_secs, trip_distance
+             output >  hour with corresponding tips average. 
+
+  plot.py: input > MapReduce output
+           output > produce the linear plot.
+
+- tips_locaiton:
+  data_proc.py: input > TripFareJoin 
+                output > tips, total, dropofftime, location
+  data_print.py: input == output == output of data_proc.py
+  coordinates_label.py: Label each trip with corresponding borough name
+                input > origianl values with additional columns for borough
+  plot.py: input > labeled data
+           output > bar plot
 
 
-NUM_COL = 14
+- merge_weather:
+  map_1.py: input > TripFareJoin
+            output > Modified date format, tips
+  reduce_1.py: input > date, tips
+               output > date, avg_tips
+  map_2.py: input > weather data, reduce_2.py output
+            output > date, values
+  reduce_2.py: input > date, values
+               output > date, combined values
 
 
-medallion, hack_license, vendor_id, rate_code, store_and_fwd_flag, pickup_datetime, dropoff_datetime, passenger_count, trip_time_in_secs, trip_distance, pickup_longitude, pickup_latitude, dropoff_longitude, dropoff_latitude
-2013000001,2013000001,VTS,1,,2013-01-01 00:00:00,2013-01-01 00:28:00,1,1680,3.94,-73.990784,40.76088,-73.954185,40.778847
-2013000002,2013000002,VTS,1,,2013-01-01 00:00:00,2013-01-01 00:06:00,5,360,.98,-73.978325,40.778091,-73.981834,40.768639
-2013000003,2013000003,VTS,1,,2013-01-01 00:00:00,2013-01-01 00:10:00,1,600,2.77,-73.989616,40.729988,-74.013779,40.705036
-2013000004,2013000004,VTS,1,,2013-01-01 00:00:00,2013-01-01 00:08:00,2,480,1.68,-73.981575,40.767632,-73.977737,40.757927
-2013000005,2013000005,VTS,1,,2013-01-01 00:00:00,2013-01-01 00:16:00,4,960,4.05,-74.000526,40.737343,-73.977226,40.783607
-2013000006,2013000006,VTS,1,,2013-01-01 00:00:00,2013-01-01 00:17:00,6,1020,9.77,-73.866135,40.771091,-73.961334,40.764912
-2013000007,2013000007,VTS,1,,2013-01-01 00:00:00,2013-01-01 00:11:00,6,660,1.78,-74.006927,40.740765,-73.982994,40.739616
-2013000008,2013000008,VTS,1,,2013-01-01 00:00:00,2013-01-01 00:05:00,3,300,.61,-73.955925,40.781887,-73.963181,40.777832
-2013000009,2013000009,CMT,1,N,2013-01-01 00:00:00,2013-01-01 00:02:44,1,163,.50,-73.999878,40.743343,-74.003708,40.74828
+- tips_vendor:
+  map.py: input >  TripFareJoin
+          output >  VendorID, tips
+  reduce.py:
+  
+  - tips_vendor:
+    map.py: input >  TripFareJoin
+            output >  VendorID, tips
+  reduce.py: input > map.py output
+             output > vendor, tips total
 
+
+
+
+- tips_vendor:
+  map.py: input >  TripFareJoin
+          output >  VendorID, tips
+  reduce.py: input > map.py output
+             output > vendor, tips total
