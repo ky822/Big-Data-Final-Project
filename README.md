@@ -77,22 +77,22 @@
  
 - DH_heatmap:
   map_DHHeatmap.py:
-  Input > TripFareJoin
-  Output > weekday + hour, count
+  Input > TripFareJoin,
+  Output > weekday + hour, count,
   reduce_DHHeatmap.py:
-  Input > map_DHHeatmap.py output
+  Input > map_DHHeatmap.py output,
   Output > weekday,hour, sum of count
 
   DHHeat_count.html:
-  Input > reduce_DHHeatmap.py output (a .tsv table)
+  Input > reduce_DHHeatmap.py output (a .tsv table),
   Output > Day/Hour Heat Map (Open in browsers)
 
 - R_map:
   density_map.R:
-  Input > TripFareJoin labeled with boroughs
-  OUtput > Density maps of different areas in NYC in different weekdays and weekends
+  Input > TripFareJoin labeled with boroughs,
+  Output > Density maps of different areas in NYC in different weekdays and weekends
 
 - shapefile:
   map_json.py:
-  Input > NYCZIP.json and zipcode_list.csv
+  Input > NYCZIP.json and zipcode_list.csv,
   Output > the shape file in tabel containing each zipcode shape
