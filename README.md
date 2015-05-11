@@ -75,3 +75,7 @@
           output >  VendorID, tips
   reduce.py: input > map.py output
              output > vendor, tips total
+
+- Data Dimension Reduction:
+  map_select.py > pickup_dates, trip in secs, trip distance, tip amout, total amount
+  reduce_select.py > pickup_dates, trip in secs, trip distance, tip amout, total amount
